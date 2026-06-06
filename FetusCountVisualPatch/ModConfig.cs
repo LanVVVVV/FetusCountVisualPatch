@@ -1,5 +1,7 @@
-﻿using FetusCountVisualPatch.Properties;
+﻿using FetusCountVisualPatch.Features;
+using FetusCountVisualPatch.Properties;
 using MBM.ModLoader.Settings;
+using System;
 
 namespace FetusCountVisualPatch;
 
@@ -10,18 +12,25 @@ internal static class ModConfig
     private static readonly int[] MaxMultiplePregnancyCountValues = { 3, 4, 5};
 
     private static readonly string[] MaxMultiplePregnancyCountLabels = { "3", "4", "5" };
+    public static int TargetMaxMultiplePregnancyCount { get; set; }
+
+    public static event Action<int>? OnMaxMultiplePregnancyCountModSettingChange;
 
     //private const string DebuggerSwitch = "Fetus Count Debugger Switch";
 
     //private const string DebuggerCount = "Debugger Fetus Count";
 
-    public static int TargetMaxMultiplePregnancyCount { get; set; }
-
     //public static bool BoolDebugger { get; set; }
 
     //public static int DebuggerFetusCount { get; set; }
 
-    internal static void MaxMultiplePregnancyCountModSetting()
+    public static void RegisterEvents()
+    {
+        ModConfig.OnMaxMultiplePregnancyCountModSettingChange += ConfigDataUpdater.UpdateMaxMultiplePregnancyCount;
+
+    }
+
+    public static void MaxMultiplePregnancyCountModSetting()
     {
         ModSettings.RegisterDropdown(ModEntry.ModName, MaxMultiplePregnancyCount, MaxMultiplePregnancyCountLabels, 0, Strings.Config_MaxMultiplePregnancyCount);
         TargetMaxMultiplePregnancyCount = MaxMultiplePregnancyCountValues[ModSettings.GetDropdown(ModEntry.ModName, MaxMultiplePregnancyCount)];
@@ -29,11 +38,12 @@ internal static class ModConfig
         {
             int max = MaxMultiplePregnancyCountValues[(int)v];
             TargetMaxMultiplePregnancyCount = max;
+            OnMaxMultiplePregnancyCountModSettingChange?.Invoke(max);
             ModEntry.Log($"{MaxMultiplePregnancyCount} = {TargetMaxMultiplePregnancyCount}");
         });
     }
 
-    internal static void MaxMultiplePregnancyCountOnLanguageChanged()
+    public static void MaxMultiplePregnancyCountOnLanguageChanged()
     {
         ModSettings.SetDescription(ModEntry.ModName, MaxMultiplePregnancyCount, Strings.Config_MaxMultiplePregnancyCount);
     }

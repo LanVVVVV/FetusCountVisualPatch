@@ -15,13 +15,15 @@ public static class ModEntry
     {
         FetusSprite.LoadSprite();
 
-        SeqObjectPoolManagerPatch.AfterGameInitialized += FetusCountVisual.Inject;
-
         ModConfig.MaxMultiplePregnancyCountModSetting();
         //ModConfig.Debugger();
 
-        Localization.OnLanguageChanged += OnLanguageChanged;
+        SeqObjectPoolManagerPatch.AfterGameInitialized += FetusCountVisual.Inject;
 
+        GameManagerPatch.AfterDataInitialized += ModConfig.RegisterEvents;
+        GameManagerPatch.AfterDataInitialized += ConfigDataUpdater.ApplyAll;
+
+        Localization.OnLanguageChanged += OnLanguageChanged;
         Log("FetusCountVisualPatch Mod loaded!");
     }
 
