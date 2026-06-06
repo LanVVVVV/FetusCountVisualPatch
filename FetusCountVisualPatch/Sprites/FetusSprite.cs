@@ -2,9 +2,9 @@
 using System.Reflection;
 using UnityEngine;
 
-namespace FetusCountVisualPatch.FetusSprite;
+namespace FetusCountVisualPatch.Sprites;
 
-public static class UIFetusSprite
+public static class FetusSprite
 {
     private static readonly Assembly assembly = Assembly.GetExecutingAssembly();
 

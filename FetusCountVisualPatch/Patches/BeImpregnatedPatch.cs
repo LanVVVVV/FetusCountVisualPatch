@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
+namespace FetusCountVisualPatch.Patches;
+
 [HarmonyPatch]
 public class BeImpregnatedPatch
 {

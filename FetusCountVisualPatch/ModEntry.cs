@@ -1,5 +1,7 @@
-﻿using FetusCountVisualPatch.FetusSprite;
+﻿using FetusCountVisualPatch.Features;
+using FetusCountVisualPatch.Patches;
 using FetusCountVisualPatch.Properties;
+using FetusCountVisualPatch.Sprites;
 using MBM.ModLoader.Core;
 using UnityEngine;
 
@@ -9,13 +11,11 @@ public static class ModEntry
 {
     internal const string ModName = "FetusCountVisualPatch";
 
-    public const int fetus4EDataType = 34;
-
-    public const int fetus5EDataType = 35;
-
     public static void Load()
     {
-        UIFetusSprite.LoadSprite();
+        FetusSprite.LoadSprite();
+
+        SeqObjectPoolManagerPatch.AfterGameInitialized += FetusCountVisual.Inject;
 
         ModConfig.MaxMultiplePregnancyCountModSetting();
         //ModConfig.Debugger();
