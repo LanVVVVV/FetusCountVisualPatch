@@ -20,15 +20,14 @@ public static class ConfigDataAccessor
 
     private static void BindField<T>(Setter<T> accessor, string fieldName)
     {
-        var type = typeof(ConfigData);
-        var field = AccessTools.Field(type, fieldName);
-        if (field != null)
+        var fieldRef = AccessTools.FieldRefAccess<ConfigData, T>(fieldName);
+
+        if (fieldRef == null)
         {
-            accessor.Set = (config, value) => field.SetValue(config, value);
+            ModEntry.LogError($"FieldRef for {fieldName} is null");
+            return;
         }
-        else
-        {
-            UnityEngine.Debug.LogError($"Field {fieldName} not found in ConfigData");
-        }
+
+        accessor.Set = (config, value) => fieldRef(config) = value;
     }
 }
