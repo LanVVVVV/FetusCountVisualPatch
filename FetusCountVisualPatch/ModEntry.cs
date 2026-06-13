@@ -18,10 +18,10 @@ public static class ModEntry
         ModConfig.MaxMultiplePregnancyCountModSetting();
         //ModConfig.Debugger();
 
-        SeqObjectPoolManagerPatch.AfterGameInitialized += FetusCountVisual.Inject;
+        FetusCountVisual.Inject();
 
-        GameManagerPatch.AfterDataInitialized += ModConfig.RegisterEvents;
-        GameManagerPatch.AfterDataInitialized += ConfigDataUpdater.ApplyAll;
+        ModConfig.RegisterEvents();
+        ConfigDataUpdater.ApplyAll();
 
         Localization.OnLanguageChanged += OnLanguageChanged;
         Log("FetusCountVisualPatch Mod loaded!");
