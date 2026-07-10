@@ -5,11 +5,16 @@
     <LangVersion>14.0</LangVersion>
     <Nullable>enable</Nullable>
     <Version>1.2.0.0</Version>
-    <Authors>LanFengVVV</Authors>
-    <Company>LanFengVVV </Company>
-    <Description>$(AssemblyName) Mod for Monster Black Market, using MBM.ModLoader</Description>
-    <MBM>..\..\..\MBM.ModLoader\Monster_Black_Market_v2.1.1.0DLC - MBM.ModLoader</MBM>
+		<Authors>LanFengVVV</Authors>
+		<Description>MBM.ModLoader mod for Monster Black Market — </Description>
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<MBM>..\..\..\MBM.ModLoader For v2.1.2.0\Monster_Black_Market_v2.1.2.0 - MBM.ModLoader</MBM>
   </PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyMetadata Include="ModPortal" Value="https://f95zone.to/threads/monster-black-market-lanfengvvvs-mods.302098/#post-20649932" />
+		<AssemblyMetadata Include="Dependencies" Value="" />
+	</ItemGroup>
 
   <ItemGroup>
     <None Remove="Sprites\slaveui_icon_fetus_4.png" />
@@ -51,7 +56,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\MBM.ModLoader\Monster_Black_Market_v2.1.1.0DLC - MBM.ModLoader - Copy\MonsterBlackMarket_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>$(MBM)\MonsterBlackMarket_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
@@ -60,19 +65,22 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Strings.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Strings.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Strings.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<Compile Update="Properties\Strings.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Strings.resx</DependentUpon>
+		</Compile>
+		<EmbeddedResource Update="Properties\Strings.zh-CN.resx">
+			<DependentUpon>Strings.resx</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Properties\Strings.ru.resx">
+			<DependentUpon>Strings.resx</DependentUpon>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>
