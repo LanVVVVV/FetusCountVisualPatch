@@ -1,0 +1,22 @@
+﻿{
+  "version": 1,
+  "author": "LanFengVVV",
+  "mods": [
+    {
+      "id": "FetusCountVisualPatch",
+      "name": "Fetus Count Visual Patch",
+      "description": "MBM.ModLoader mod for Monster Black Market — Adds status icons for pregnancy counts 4 and 5, and allows setting the upper limit on the Max Concurrent Fetuses. This mod is specifically designed for ComplexBreeding's larger Max Concurrent Fetuses.",
+      "version": "1.2.1",
+      "package": "https://github.com/LanVVVVV/FetusCountVisualPatch/releases/download/v1.2.1/FetusCountVisualPatch.v1.2.1.zip",
+      "icon": "",
+      "modPortal": "https://f95zone.to/threads/monster-black-market-lanfengvvvs-mods.302098/#post-20649932",
+      "dependencies": "",
+      "gameVersion": "2.1.2.0",
+      "changelog": "",
+      "categories": [ "Content", "UI" ],
+      "tags": ["Characters", "Patches", "Compatibility"],
+      "downloads": 0,
+      "updated": "10.07.2026"
+    }
+  ]
+}

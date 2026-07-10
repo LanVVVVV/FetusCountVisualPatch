@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Version>1.2.1.0</Version>
 		<Authors>LanFengVVV</Authors>
-		<Description>MBM.ModLoader mod for Monster Black Market — </Description>
+		<Description>MBM.ModLoader mod for Monster Black Market — Adds status icons for pregnancy counts 4 and 5, and allows setting the upper limit on the Max Concurrent Fetuses. This mod is specifically designed for ComplexBreeding's larger Max Concurrent Fetuses.</Description>
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 		<MBM>..\..\..\MBM.ModLoader For v2.1.2.0\Monster_Black_Market_v2.1.2.0 - MBM.ModLoader</MBM>
   </PropertyGroup>
