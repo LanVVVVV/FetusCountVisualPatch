@@ -3,6 +3,7 @@ using FetusCountVisualPatch.Patches;
 using FetusCountVisualPatch.Properties;
 using FetusCountVisualPatch.Sprites;
 using MBM.ModLoader.Core;
+using MBM.ModLoader.Settings;
 using UnityEngine;
 
 namespace FetusCountVisualPatch;
@@ -16,15 +17,24 @@ public static class ModEntry
         FetusSprite.LoadSprite();
 
         ModConfig.MaxMultiplePregnancyCountModSetting();
-        //ModConfig.Debugger();
+        ModSettingInitialized();
 
         SeqObjectPoolManagerPatch.AfterGameInitialized += FetusCountVisual.Inject;
 
-        GameManagerPatch.AfterDataInitialized += ModConfig.RegisterEvents;
-        GameManagerPatch.AfterDataInitialized += ConfigDataUpdater.ApplyAll;
-
         Localization.OnLanguageChanged += OnLanguageChanged;
         Log("FetusCountVisualPatch Mod loaded!");
+    }
+
+    private static void ModSettingInitialized()
+    {
+        if (Loader.IsModLoaded("ComplexBreedingRedux"))
+        {
+            Log("Detected: ComplexBreedingRedux enabled.");
+            ModConfig.HideMaxMultiplePregnancyCountModSetting();
+            return;
+        }
+        GameManagerPatch.AfterDataInitialized += ModConfig.RegisterEvents;
+        GameManagerPatch.AfterDataInitialized += ConfigDataUpdater.ApplyAll;
     }
 
     private static void OnLanguageChanged(string langCode)

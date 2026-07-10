@@ -40,5 +40,11 @@ internal static class ModConfig
     {
         ModSettings.SetDescription(ModEntry.ModName, MaxMultiplePregnancyCount, Strings.Config_MaxMultiplePregnancyCount);
     }
+
+    public static void HideMaxMultiplePregnancyCountModSetting()
+    {
+        ModSettings.HideSetting(ModEntry.ModName, MaxMultiplePregnancyCount);
+        ModEntry.Log($"ModSetting '{MaxMultiplePregnancyCount}' has been hidden.");
+    }
 }
 
