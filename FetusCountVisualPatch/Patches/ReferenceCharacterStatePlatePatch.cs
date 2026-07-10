@@ -21,6 +21,7 @@ public static class ReferenceCharacterStatePlatePatch
     }
 
     [HarmonyPatch(nameof(ReferenceCharacterStatePlate.GetBool))]
+    [HarmonyPriority(Priority.Last)]
     [HarmonyPostfix]
     public static void GetBoolPostfix(ReferenceCharacterStatePlate __instance, int ___m_DataType, ref bool __result)
     {
